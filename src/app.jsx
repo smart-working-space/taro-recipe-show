@@ -4,7 +4,7 @@ import Index from "./pages/index";
 
 import detailStore from "./store/detail";
 import listStore from "./store/list";
-
+import searchStore from "./store/search";
 import "./app.less";
 import "taro-ui/dist/style/index.scss"; // 全局引入一次即可
 
@@ -16,7 +16,8 @@ import "taro-ui/dist/style/index.scss"; // 全局引入一次即可
 
 const store = {
   detailStore,
-  listStore
+  listStore,
+  searchStore
 };
 
 class App extends Component {

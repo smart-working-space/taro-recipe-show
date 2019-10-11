@@ -1,6 +1,8 @@
 import Taro, { Component } from "@tarojs/taro";
 import { View, Image, Text } from "@tarojs/components";
 import { AtIcon } from "taro-ui";
+import "./listComponent.less";
+
 class ListComponent extends Component {
   goTo(recipeId) {
     // 跳转到目的页面，打开新页面
@@ -15,7 +17,11 @@ class ListComponent extends Component {
           <View className="at-row at-row__align--center">
             <View className="recipe-item">
               <View onClick={this.goTo.bind(this, item.recipe)}>
-                <Image className="image-content" src={item.picUrl} />
+                <Image
+                  mode="widthFix"
+                  className="image-content"
+                  src={item.picUrl}
+                />
               </View>
               <View className="at-row" style="margin-top:4px;">
                 <View className="at-col  at-col--auto col-content">
@@ -27,6 +33,8 @@ class ListComponent extends Component {
               </View>
               <View className="at-row" style="margin-top:4px;">
                 <View className="at-col  at-col--auto col-content">
+                  <AtIcon value="star" size="18" color="#afabab"></AtIcon>
+                  <AtIcon value="star" size="18" color="#afabab"></AtIcon>
                   <AtIcon value="star" size="18" color="#afabab"></AtIcon>
                   <AtIcon value="star" size="18" color="#afabab"></AtIcon>
                   <AtIcon value="star" size="18" color="#afabab"></AtIcon>

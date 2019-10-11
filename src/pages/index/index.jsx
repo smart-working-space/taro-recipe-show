@@ -1,11 +1,12 @@
 import Taro, { Component } from "@tarojs/taro";
-import { View } from "@tarojs/components";
+import { View, ScrollView } from "@tarojs/components";
 import { observer, inject } from "@tarojs/mobx";
-import { AtLoadMore, AtTabBar, AtSegmentedControl, AtSearchBar } from "taro-ui";
-import { ScrollView } from "@tarojs/components";
+import { AtTabBar, AtSegmentedControl, AtAvatar } from "taro-ui";
 const res = Taro.getSystemInfoSync();
 import "./index.less";
 import ListComponent from "../../components/listComponent";
+import LoadingView from "../../components/loadingView";
+import SearchView from "./searchView";
 
 @inject("listStore")
 @observer
@@ -43,14 +44,6 @@ class Index extends Component {
     let { listStore } = this.props;
     listStore.handleBarClick(value);
   };
-  searchValueChange = value => {
-    let { listStore } = this.props;
-    listStore.searchValueChange(value);
-  };
-  onActionClick() {
-    console.log("开始搜索");
-  }
-  onScrollToUpper(e) {}
   onScrollToLower(e) {
     let { listStore } = this.props;
     listStore.scrollGetData();
@@ -58,22 +51,12 @@ class Index extends Component {
 
   render() {
     const {
-      listStore: {
-        listData,
-        currentTag,
-        scrollTop,
-        currentBar,
-        isEnd,
-        searchValue
-      }
+      listStore: { listData, currentTag, scrollTop, currentBar, isEnd }
     } = this.props;
     const scrollStyle = {
       height: res.windowHeight - 46 - 70 + "px"
     };
     const Threshold = 20;
-
-    //loading
-    let loadingView = <AtLoadMore status={isEnd ? "noMore" : "loading"} />;
 
     let currentBarView = null;
     if (currentBar === 0) {
@@ -96,12 +79,11 @@ class Index extends Component {
             style={scrollStyle}
             lowerThreshold={Threshold}
             upperThreshold={Threshold}
-            onScrollToUpper={this.onScrollToUpper} // 使用箭头函数的时候 可以这样写 `onScrollToUpper={this.onScrollToUpper}`
             onScrollToLower={this.onScrollToLower.bind(this)}
           >
             <View className="scroll-content">
               <ListComponent listData={listData} />
-              {loadingView}
+              <LoadingView status={isEnd ? "noMore" : "loading"} />
             </View>
           </ScrollView>
         </View>
@@ -109,21 +91,28 @@ class Index extends Component {
     } else if (currentBar === 1) {
       currentBarView = (
         <View>
-          <AtSearchBar
-            actionName="搜一下"
-            value={searchValue}
-            onChange={this.searchValueChange}
-            onActionClick={this.onActionClick}
-          />
+          <SearchView></SearchView>
         </View>
       );
     } else if (currentBar === 2) {
-      currentBarView = <View>6666</View>;
+      currentBarView = (
+        <View>
+          <View className="at-row at-row__justify--center">
+            <View className="avtar-view">
+              <AtAvatar
+                size="large"
+                circle
+                image="https://jdc.jd.com/img/200"
+              ></AtAvatar>
+              <View>parker</View>
+            </View>
+          </View>
+        </View>
+      );
     }
     return (
       <View className="index">
         <View>{currentBarView}</View>
-
         <AtTabBar
           fixed
           tabList={[
