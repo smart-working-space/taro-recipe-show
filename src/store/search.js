@@ -48,13 +48,12 @@ const searchStore = observable({
       // mode: 'no-cors'
     })
       .then(res => {
-        console.log(res.data);
         // if (res.data && res.data.list.length <= 0) {
         //   that.isEnd = true;
         //   return;
         // }
         let newDataCache = res.data.list;
-        console.log(newDataCache, '请求');
+        console.log(newDataCache, '请求服务器的数据');
         that.searchData = newDataCache;
         that.isEnd = true;
         return;

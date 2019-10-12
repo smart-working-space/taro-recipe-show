@@ -25,7 +25,6 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     let { listStore } = this.props;
     listStore.getRecomendData();
   }

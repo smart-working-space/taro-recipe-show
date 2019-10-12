@@ -19,7 +19,7 @@ const listStore = observable({
     if (getStorageTimestamp) {
       let setRange = moreDayClearStorage * 24 * 60 * 60 * 1000;//天数转毫秒
       let isNeedClearStorage = util.isNeedClearStorage(setRange, getStorageTimestamp);
-      console.log(isNeedClearStorage);
+      console.log(isNeedClearStorage, "是否超过了缓存时间");
       if (isNeedClearStorage) {
         Taro.clearStorage();
       }
@@ -36,7 +36,7 @@ const listStore = observable({
       this.clearDataStorage();
       let getData = Taro.getStorageSync(requestFun) //如果有缓存，就读取缓存数据
       if (getData && getData.length > 0) {
-        console.log(getData, requestFun + '缓存');
+        console.log(getData, "获取" + requestFun + '缓存');
         this.listData = getData;
         return;
       }
@@ -62,14 +62,14 @@ const listStore = observable({
       // mode: 'no-cors'
     })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         // Taro.hideLoading();
         if (res.data && res.data.list.length <= 0) {
           that.isEnd = true;
           return;
         }
         let newDataCache = that.listData.concat(res.data.list);
-        console.log(newDataCache, requestFun + '请求');
+        console.log(newDataCache, requestFun + '请求的新数据+之前的数据');
         that.listData = newDataCache;
         Taro.setStorageSync(requestFun, res.data.list);
       })

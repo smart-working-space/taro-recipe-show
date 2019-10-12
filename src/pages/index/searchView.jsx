@@ -19,12 +19,9 @@ class Index extends Component {
 
   componentWillMount() {}
 
-  componentWillReact() {
-    console.log("componentWillReact");
-  }
+  componentWillReact() {}
 
   componentDidMount() {
-    console.log(this.props, "searchView");
     let { searchStore } = this.props;
     searchStore.getListData();
   }
