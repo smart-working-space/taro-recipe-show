@@ -121,7 +121,7 @@ class Index extends Component {
                 src={detailData.picurl}
               />
               <View className="detail-mask">
-                <View className="at-row" style="margin-top:4px;">
+                <View className="at-row" style="margin-top:9px;">
                   <View
                     className="at-col  at-col--auto col-content"
                     style="position:relative"
