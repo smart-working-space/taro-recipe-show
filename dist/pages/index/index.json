@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "at-segmented-control": "../../npm/taro-ui/dist/weapp/components/segmented-control/index",
+    "list-component": "../../components/listComponent",
+    "loading-view": "../../components/loadingView",
+    "search-view": "./searchView",
+    "at-avatar": "../../npm/taro-ui/dist/weapp/components/avatar/index",
+    "at-tab-bar": "../../npm/taro-ui/dist/weapp/components/tab-bar/index"
+  },
+  "navigationBarTitleText": "首页"
+}

@@ -55,17 +55,18 @@ class Index extends Component {
     };
     const Threshold = 20;
 
-    let stepView = null;
     detailData.steps = detailData.steps || [];
     detailData.mainingredients = detailData.mainingredients || [];
     detailData.ingredients = detailData.ingredients || [];
+    console.log(detailData.steps);
     let stepNumber = 1;
-    stepView = detailData.steps.map(item => {
+    let stepView = detailData.steps.map((item, index) => {
+      stepNumber++;
       return (
-        <View className="desc-section">
+        <View className="desc-section" key={index}>
           <Image mode="widthFix" className="image-content" src={item.url} />
           <View>
-            <Text className="step-title">步骤{stepNumber++}</Text>
+            <Text className="step-title">步骤{stepNumber}</Text>
           </View>
           <View>
             <Text className="step-desc">{item.desc}</Text>
@@ -73,16 +74,16 @@ class Index extends Component {
         </View>
       );
     });
-    let mainingredients = detailData.mainingredients.map(item => {
+    let mainingredients = detailData.mainingredients.map((item, index) => {
       return (
-        <View style="margin-right:6px;">
+        <View style="margin-right:6px;" key={index}>
           <Text className="main-text">{item.name}</Text>
         </View>
       );
     });
-    let ingredients = detailData.ingredients.map(item => {
+    let ingredients = detailData.ingredients.map((item, index) => {
       return (
-        <View style="margin-right:10px;">
+        <View style="margin-right:10px;" key={index}>
           <Text className="main-text">
             {item.name}
             {item.weight}

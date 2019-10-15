@@ -1,0 +1,37 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="index">
+        <view>
+            <block>
+                <block wx:if="{{currentBar === 0}}">
+                    <view>
+                        <view class="tab-content">
+                            <at-segmented-control compid="{{$compid__0}}"></at-segmented-control>
+                        </view>
+                        <scroll-view class="scrollview" scroll-y="{{true}}" scroll-with-animation="{{true}}" scroll-top="{{scrollTop}}" style="{{_$anonymousState__temp2}}" lower-threshold="{{Threshold}}" upper-threshold="{{Threshold}}" bindscrolltolower="onScrollToLower" data-e-scrolltolower-so="this">
+                            <view class="scroll-content">
+                                <list-component compid="{{$compid__1}}"></list-component>
+                                <loading-view compid="{{$compid__2}}"></loading-view>
+                            </view>
+                        </scroll-view>
+                    </view>
+                </block>
+                <block wx:elif="{{currentBar === 1}}">
+                    <view>
+                        <search-view></search-view>
+                    </view>
+                </block>
+                <block wx:elif="{{currentBar === 2}}">
+                    <view>
+                        <view class="at-row at-row__justify--center">
+                            <view class="avtar-view">
+                                <at-avatar compid="{{$compid__3}}"></at-avatar>
+                                <view>parker</view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+        </view>
+        <at-tab-bar compid="{{$compid__4}}"></at-tab-bar>
+    </view>
+</block>

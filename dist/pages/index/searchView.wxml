@@ -1,0 +1,18 @@
+<block wx:if="{{$taroCompReady}}">
+    <view>
+        <at-search-bar compid="{{$compid__25}}"></at-search-bar>
+        <view class="at-row">
+            <view class="at-col at-col-1 at-col--auto tabs-category">
+                <at-tabs compid="{{$compid__26}}"></at-tabs>
+            </view>
+            <view class="at-col">
+                <scroll-view class="scrollview" scroll-y="{{true}}" scroll-with-animation="{{true}}" style="{{anonymousState__temp2}}" lower-threshold="{{Threshold}}" upper-threshold="{{Threshold}}">
+                    <view>
+                        <category-list compid="{{$compid__27}}"></category-list>
+                        <loading-view compid="{{$compid__28}}"></loading-view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+</block>

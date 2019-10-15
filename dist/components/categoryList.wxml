@@ -1,0 +1,13 @@
+<block wx:if="{{$taroCompReady}}">
+    <view>
+        <view class="" wx:key="recipe" style="padding:10px;" wx:for="{{searchData}}" wx:for-item="item" wx:for-index="_anonIdx2">
+            <view class="category-item">
+                <view bindtap="goTo" data-e-tap-so="this" data-e-tap-a-a="{{item.recipe}}">
+                    <image mode="widthFix" class="category-image-content" src="{{item.picUrl}}"></image>
+                </view>
+                <view class="at-col  at-col--auto col-content" style="margin-left:10px;"><text class="category-name">{{item.name}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</block>

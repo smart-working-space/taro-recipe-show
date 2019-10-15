@@ -1,0 +1,124 @@
+
+.detail-nav-content {
+  background-color: #6190e8;
+}
+.tab-centent-item {
+  border-radius: 0;
+  height: 80rpx;
+  line-height: 70rpx;
+}
+.menu-title {
+  color: white;
+}
+.recipe-item {
+  width: 100%;
+  min-height: 150rpx;
+  margin-top: 20rpx;
+  border-width: 2rpx;
+  border-style: solid;
+  border-color: #e6e6e6;
+  border-radius: 10rpx;
+  padding: 10rpx;
+}
+.detail-image-section {
+  position: relative;
+}
+.image-content {
+  width: 100%;
+  min-height: 200rpx;
+}
+.scroll-content {
+  padding: 20rpx;
+}
+.col-content {
+  margin-top: -20rpx;
+}
+.recipe-name {
+  font-size: 30rpx;
+  color: #3d4145;
+}
+.recipe-abstruct {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #afabab;
+}
+.col-content {
+  margin-top: -28rpx;
+}
+.difficulty-title {
+  font-size: 28rpx;
+  color: #3d4145;
+  margin-left: 20rpx;
+}
+.difficulty-sub-title {
+  margin-left: 8rpx;
+  font-size: 28rpx;
+  color: #7f7e7e;
+}
+.clock-icon {
+  margin-left: 20rpx;
+}
+.heart-icon {
+  position: relative;
+  top: 4rpx;
+}
+.time-title {
+  font-size: 28rpx;
+  color: #3d4145;
+  margin-left: 8rpx;
+}
+.desc-section {
+  padding: 20rpx;
+  border-top: 2rpx solid #f1f1f1;
+  border-bottom: 2rpx solid #f1f1f1;
+  margin-top: 30rpx;
+}
+.desc-text {
+  font-size: 24rpx;
+  color: #3d4145;
+}
+.step-title {
+  font-size: 34rpx;
+  color: black;
+}
+.step-desc {
+  font-size: 28rpx;
+  color: #3d4145;
+}
+.tips-text {
+  font-size: 28rpx;
+  color: #ff4f4f;
+}
+.detail-mask {
+  position: absolute;
+  bottom: 40rpx;
+  left: 50%;
+  width: 94%;
+  margin-left: -48%;
+  background: rgba(242, 242, 242, 0.72);
+  border-radius: 10rpx;
+  padding: 5rpx 10rpx 0 10rpx;
+}
+.device-section {
+  width: 80rpx;
+  height: 30rpx;
+  background-color: #e6e6e6;
+  position: absolute;
+}
+.device-type {
+  font-size: 24rpx;
+  color: #3d4145;
+}
+.heart-section {
+  position: relative;
+  top: -1rpx;
+  margin-left: 0;
+}
+.main-text {
+  color: #909090;
+  font-size: 24rpx;
+}

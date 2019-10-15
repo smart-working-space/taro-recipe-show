@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "at-nav-bar": "../../npm/taro-ui/dist/weapp/components/nav-bar/index",
+    "loading-view": "../../components/loadingView",
+    "at-tag": "../../npm/taro-ui/dist/weapp/components/tag/index",
+    "at-icon": "../../npm/taro-ui/dist/weapp/components/icon/index",
+    "at-toast": "../../npm/taro-ui/dist/weapp/components/toast/index"
+  },
+  "navigationBarTitleText": "详情页"
+}
