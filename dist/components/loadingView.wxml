@@ -1,3 +1,0 @@
-<block wx:if="{{$taroCompReady}}">
-    <at-load-more compid="{{$compid__24}}"></at-load-more>
-</block>

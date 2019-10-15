@@ -24,10 +24,10 @@ class ListComponent extends Component {
                 />
               </View>
               <View className="at-row" style="margin-top:4px;">
-                <View className="at-col  at-col--auto col-content">
+                <View className="at-col--auto col-content">
                   <Text className="recipe-name">{item.name}</Text>
                 </View>
-                <View className="recipe-abstruct">
+                <View className="at-col recipe-abstruct">
                   <Text>{item.abstruct}</Text>
                 </View>
               </View>
@@ -39,16 +39,16 @@ class ListComponent extends Component {
                   <AtIcon value="star" size="18" color="#afabab"></AtIcon>
                   <AtIcon value="star" size="18" color="#afabab"></AtIcon>
                   <Text className="difficulty-title">难度</Text>
-                  <Text className="difficulty-sub-title">难</Text>
+                  <Text className="difficulty-sub-title">简单</Text>
                   <AtIcon
                     value="clock"
                     size="18"
                     color="#c4c4c4"
                     className="clock-icon"
                   ></AtIcon>
-                  <Text className="time-title">7</Text>
+                  <Text className="time-title">{item.costTime}</Text>
                   <Text className="time-title">分</Text>
-                  <Text className="time-title">0</Text>
+                  <Text className="time-title">{item.costTimeSec}</Text>
                   <Text className="time-title">秒</Text>
                   <AtIcon
                     value="heart"
@@ -56,7 +56,7 @@ class ListComponent extends Component {
                     color="#afabab"
                     className="clock-icon heart-icon"
                   ></AtIcon>
-                  <Text className="time-title">1</Text>
+                  <Text className="time-title">{item.collectTime}</Text>
                 </View>
               </View>
             </View>

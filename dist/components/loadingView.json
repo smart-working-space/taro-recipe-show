@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "at-load-more": "../npm/taro-ui/dist/weapp/components/load-more/index"
-  }
-}
