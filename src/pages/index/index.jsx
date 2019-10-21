@@ -1,12 +1,19 @@
 import Taro, { Component } from "@tarojs/taro";
-import { View, ScrollView } from "@tarojs/components";
+import { View, Text, Image, ScrollView } from "@tarojs/components";
 import { observer, inject } from "@tarojs/mobx";
-import { AtTabBar, AtSegmentedControl, AtAvatar } from "taro-ui";
+import {
+  AtTabBar,
+  AtSegmentedControl,
+  AtTimeline,
+  AtDivider,
+  AtSteps
+} from "taro-ui";
 const res = Taro.getSystemInfoSync();
 import "./index.less";
 import ListComponent from "../../components/listComponent";
 import LoadingView from "../../components/loadingView";
 import SearchView from "./searchView";
+import namedPng from "../../images/header.jpg";
 
 @inject("listStore")
 @observer
@@ -58,6 +65,21 @@ class Index extends Component {
     const Threshold = 20;
 
     let currentBarView = null;
+    const items = [
+      {
+        title: "广州喜淘信息科技公司",
+        desc: "担任前端开发工程师，负责PC官网和移动官网的开发，"
+      },
+      {
+        title: "广东斯越科技有限公司",
+        desc: "担任前端开发工程师，负责移动官网，商城以及后台管理系统的开发"
+      },
+      {
+        title: "美的",
+        desc:
+          "现任职美的厨房电器制造有限公司，担任先行研究工程师一职（前端开发）"
+      }
+    ];
     if (currentBar === 0) {
       currentBarView = (
         <View>
@@ -95,16 +117,37 @@ class Index extends Component {
       );
     } else if (currentBar === 2) {
       currentBarView = (
-        <View>
+        <View style="padding:20px;">
+          <View>
+            <Text className="me-title">该应用介绍</Text>
+          </View>
           <View className="at-row at-row__justify--center">
             <View className="avtar-view">
-              <AtAvatar
-                size="large"
-                circle
-                image="https://jdc.jd.com/img/200"
-              ></AtAvatar>
-              <View>parker</View>
+              <View>
+                <AtTimeline
+                  items={[
+                    { title: "前后端分离，react+mobx架构" },
+                    { title: "less语法" },
+                    { title: "缓存数据，秒进首页" },
+                    { title: "一套代码架构H5以及小程序应用" },
+                    { title: "智能云食谱H5应用" },
+                    { title: "node服务渲染" }
+                  ]}
+                ></AtTimeline>
+              </View>
             </View>
+          </View>
+          <AtDivider content="Next" />
+          <View>
+            <Text className="me-title">个人介绍</Text>
+          </View>
+          <View className="at-row at-row__justify--center">
+            <View>
+              <Image className="header-img" src={namedPng} />
+            </View>
+          </View>
+          <View className="at-row at-row__justify--center">
+            <AtSteps items={items} current={2} />
           </View>
         </View>
       );
