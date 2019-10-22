@@ -18,9 +18,6 @@ import namedPng from "../../images/header.jpg";
 @inject("listStore")
 @observer
 class Index extends Component {
-  constructor() {
-    super(...arguments);
-  }
   config = {
     navigationBarTitleText: "首页"
   };
@@ -32,8 +29,9 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    let { listStore } = this.props;
-    listStore.getRecomendData();
+    // let { listStore } = this.props;
+    // console.log(listStore);
+    // listStore.getRecomendData();
   }
 
   componentWillUnmount() {}
@@ -54,6 +52,11 @@ class Index extends Component {
     let { listStore } = this.props;
     listStore.scrollGetData();
   }
+  // backGoto(recipeId) {
+  //   Taro.navigateTo({
+  //     url: "/pages/detail/index?recipeId=" + recipeId
+  //   });
+  // }
 
   render() {
     const {
@@ -87,7 +90,7 @@ class Index extends Component {
             <AtSegmentedControl
               className="tab-centent-item"
               values={["推荐", "评分", "收藏"]}
-              onClick={this.handleTagClick}
+              onClick={this.handleTagClick.bind(this)}
               current={currentTag}
               // selectedColor="#e07200"
             />
@@ -162,7 +165,7 @@ class Index extends Component {
             { title: "分类", iconType: "bullet-list" },
             { title: "我的", iconType: "user", text: "", max: "" }
           ]}
-          onClick={this.handleBarClick}
+          onClick={this.handleBarClick.bind(this)}
           current={currentBar}
         />
       </View>

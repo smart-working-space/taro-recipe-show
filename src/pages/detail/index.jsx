@@ -5,13 +5,15 @@ import { AtNavBar, AtIcon, AtTag, AtToast } from "taro-ui";
 import "./index.less";
 import LoadingView from "../../components/loadingView";
 const res = Taro.getSystemInfoSync();
-@inject("detailStore")
-@observer
+const requestUrl = "https://iot2.midea.com.cn/nutrition/v1/recipe";
+
 class Index extends Component {
   constructor() {
     super(...arguments);
     this.state = {
-      tipOpen: false
+      tipOpen: false,
+      detailData: {},
+      isLoading: false
     };
   }
   config = {
@@ -23,11 +25,40 @@ class Index extends Component {
   }
 
   componentWillReact() {}
+  getDetailData(recipeId) {
+    let that = this;
+    let getData = Taro.getStorageSync("detailData:" + recipeId); //如果有缓存，就读取缓存数据
+    if (getData) {
+      console.log(getData, "读取detail缓存数据");
+      this.setState({ detailData: getData });
+      return;
+    }
+    let requestData = {
+      recipe: recipeId,
+      uid: "1"
+    };
+    requestData.fun = "recipeDetail";
+    this.setState({ detailData: {} });
+    this.setState({ isLoading: true });
+    Taro.request({
+      url: requestUrl,
+      data: "data=" + JSON.stringify(requestData),
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST"
+      // mode: 'no-cors'
+    }).then(res => {
+      console.log(res.data, "请求服务器的数据");
+      that.setState({ detailData: res.data });
+      that.setState({ isLoading: false });
+      Taro.setStorageSync("detailData:" + recipeId, res.data);
+    });
+  }
 
   componentDidMount() {
     let { recipeId } = this.$router.params;
-    let { detailStore } = this.props;
-    detailStore.getDetailData(recipeId);
+    this.getDetailData(recipeId);
   }
 
   componentWillUnmount() {}
@@ -46,9 +77,7 @@ class Index extends Component {
   }
 
   render() {
-    const {
-      detailStore: { detailData, isLoading }
-    } = this.props;
+    const { detailData, isLoading } = this.state;
 
     const scrollStyle = {
       height: res.windowHeight - 60 + "px"
@@ -58,7 +87,6 @@ class Index extends Component {
     detailData.steps = detailData.steps || [];
     detailData.mainingredients = detailData.mainingredients || [];
     detailData.ingredients = detailData.ingredients || [];
-    console.log(detailData.steps);
     let stepNumber = 1;
     let stepView = detailData.steps.map((item, index) => {
       stepNumber++;

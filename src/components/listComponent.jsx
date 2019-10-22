@@ -4,8 +4,12 @@ import { AtIcon } from "taro-ui";
 import "./listComponent.less";
 
 class ListComponent extends Component {
+  constructor() {
+    super(...arguments);
+  }
   goTo(recipeId) {
     // 跳转到目的页面，打开新页面
+    // this.props.backGoto(recipeId);
     Taro.navigateTo({
       url: "/pages/detail/index?recipeId=" + recipeId
     });

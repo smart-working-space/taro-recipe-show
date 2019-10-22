@@ -1,9 +1,9 @@
 import Taro, { Component } from "@tarojs/taro";
-import { Provider } from "@tarojs/mobx";
-import Index from "./pages/index";
+import { onError, Provider } from "@tarojs/mobx";
+import Index from "./pages/index/index";
 
-import detailStore from "./store/detail";
 import listStore from "./store/list";
+// import detailStore from "./store/detail";
 import searchStore from "./store/search";
 import "./app.less";
 import "taro-ui/dist/style/index.scss"; // 全局引入一次即可
@@ -13,10 +13,13 @@ import "taro-ui/dist/style/index.scss"; // 全局引入一次即可
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
 //   require('nerv-devtools')
 // }
+onError(error => {
+  console.log("mobx global error listener:", error);
+});
 
 const store = {
-  detailStore,
   listStore,
+  // detailStore,
   searchStore
 };
 
@@ -31,7 +34,10 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    listStore.getRecomendData();
+    searchStore.getListData();
+  }
 
   componentDidShow() {}
 
@@ -50,4 +56,9 @@ class App extends Component {
   }
 }
 
-Taro.render(<App />, document.getElementById("app"));
+Taro.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("app")
+);

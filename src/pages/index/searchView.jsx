@@ -10,9 +10,6 @@ const res = Taro.getSystemInfoSync();
 @inject("searchStore")
 @observer
 class Index extends Component {
-  constructor() {
-    super(...arguments);
-  }
   config = {
     navigationBarTitleText: "详情页"
   };
@@ -22,8 +19,8 @@ class Index extends Component {
   componentWillReact() {}
 
   componentDidMount() {
-    let { searchStore } = this.props;
-    searchStore.getListData();
+    // let { searchStore } = this.props;
+    // searchStore.getListData();
   }
 
   componentWillUnmount() {}

@@ -3,6 +3,9 @@ import { View, Image, Text } from "@tarojs/components";
 import "./categoryList.less";
 
 class categoryList extends Component {
+  constructor() {
+    super(...arguments);
+  }
   goTo(recipeId) {
     // 跳转到目的页面，打开新页面
     Taro.navigateTo({
