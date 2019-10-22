@@ -35,6 +35,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+    console.log("enter");
     listStore.getRecomendData();
     searchStore.getListData();
   }

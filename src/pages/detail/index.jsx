@@ -1,6 +1,5 @@
 import Taro, { Component } from "@tarojs/taro";
 import { View, Image, Text, ScrollView } from "@tarojs/components";
-import { observer, inject } from "@tarojs/mobx";
 import { AtNavBar, AtIcon, AtTag, AtToast } from "taro-ui";
 import "./index.less";
 import LoadingView from "../../components/loadingView";

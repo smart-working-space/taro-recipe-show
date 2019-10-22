@@ -6,7 +6,8 @@ import {
   AtSegmentedControl,
   AtTimeline,
   AtDivider,
-  AtSteps
+  AtSteps,
+  AtToast
 } from "taro-ui";
 const res = Taro.getSystemInfoSync();
 import "./index.less";
@@ -18,6 +19,12 @@ import namedPng from "../../images/header.jpg";
 @inject("listStore")
 @observer
 class Index extends Component {
+  constructor() {
+    super(...arguments);
+    this.state = {
+      moreOpen: false
+    };
+  }
   config = {
     navigationBarTitleText: "首页"
   };
@@ -52,6 +59,12 @@ class Index extends Component {
     let { listStore } = this.props;
     listStore.scrollGetData();
   }
+  moreDesc() {
+    this.setState({
+      moreOpen: true
+    });
+  }
+
   // backGoto(recipeId) {
   //   Taro.navigateTo({
   //     url: "/pages/detail/index?recipeId=" + recipeId
@@ -120,7 +133,7 @@ class Index extends Component {
       );
     } else if (currentBar === 2) {
       currentBarView = (
-        <View style="padding:20px;">
+        <View style="padding:20px;padding-top:0px;">
           <View>
             <Text className="me-title">该应用介绍</Text>
           </View>
@@ -129,11 +142,12 @@ class Index extends Component {
               <View>
                 <AtTimeline
                   items={[
+                    { title: "智能云食谱H5运营应用" },
                     { title: "前后端分离，react+mobx架构" },
                     { title: "less语法" },
                     { title: "缓存数据，秒进首页" },
+                    { title: "预加载分类页面数据" },
                     { title: "一套代码架构H5以及小程序应用" },
-                    { title: "智能云食谱H5应用" },
                     { title: "node服务渲染" }
                   ]}
                 ></AtTimeline>
@@ -152,6 +166,21 @@ class Index extends Component {
           <View className="at-row at-row__justify--center">
             <AtSteps items={items} current={2} />
           </View>
+          <View
+            className="at-row at-row__justify--end"
+            style="margin-top:20px;"
+          >
+            <Text
+              className="me-title more-desc"
+              onClick={this.moreDesc.bind(this)}
+            >
+              更多介绍
+            </Text>
+          </View>
+          <AtToast
+            isOpened={this.state.moreOpen}
+            text="没有更多介绍啦，亲"
+          ></AtToast>
         </View>
       );
     }
