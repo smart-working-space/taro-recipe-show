@@ -28,6 +28,13 @@ class Index extends Component {
     let that = this;
     let getData = Taro.getStorageSync("detailData:" + recipeId); //如果有缓存，就读取缓存数据
     if (getData) {
+      if (getData && getData.error) {
+        Taro.showToast({
+          title: "没有请求到数据哦",
+          icon: "none",
+          duration: 2000
+        });
+      }
       console.log(getData, "读取detail缓存数据");
       this.setState({ detailData: getData });
       return;
@@ -48,6 +55,13 @@ class Index extends Component {
       method: "POST"
       // mode: 'no-cors'
     }).then(res => {
+      if (res.data && res.data.error) {
+        Taro.showToast({
+          title: "没有请求到数据哦",
+          icon: "none",
+          duration: 2000
+        });
+      }
       console.log(res.data, "请求服务器的数据");
       that.setState({ detailData: res.data });
       that.setState({ isLoading: false });

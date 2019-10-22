@@ -19,12 +19,6 @@ import namedPng from "../../images/header.jpg";
 @inject("listStore")
 @observer
 class Index extends Component {
-  constructor() {
-    super(...arguments);
-    this.state = {
-      moreOpen: false
-    };
-  }
   config = {
     navigationBarTitleText: "首页"
   };
@@ -60,8 +54,10 @@ class Index extends Component {
     listStore.scrollGetData();
   }
   moreDesc() {
-    this.setState({
-      moreOpen: true
+    Taro.showToast({
+      title: "没有更多介绍了哦，亲",
+      icon: "none",
+      duration: 2000
     });
   }
 
@@ -177,10 +173,6 @@ class Index extends Component {
               更多介绍
             </Text>
           </View>
-          <AtToast
-            isOpened={this.state.moreOpen}
-            text="没有更多介绍啦，亲"
-          ></AtToast>
         </View>
       );
     }
