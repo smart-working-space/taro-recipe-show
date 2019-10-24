@@ -1,8 +1,11 @@
 const fs = require('fs');
 const path = require('path');
+var compression = require('compression');
 var express = require('express');
 var app = express();
 
+//尽量在其他中间件前使用compression
+app.use(compression());
 //设置跨域访问
 app.all('*', function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
